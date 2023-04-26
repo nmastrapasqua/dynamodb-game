@@ -1,0 +1,103 @@
+service: dynamodb-game
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: iamadmin-general
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:BatchGetItem"
+        - "dynamodb:ConditionCheckItem"
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:Query"
+        - "dynamodb:UpdateItem"
+      Resource:
+        Fn::GetAtt:
+          - GameTable
+          - Arn
+  environment:
+    TABLE_NAME: "GameTable"
+
+functions:
+  createUser:
+    handler: src/handlers/createUser.main
+    events:
+      - http:
+          path: /users
+          method: post
+  getUser:
+    handler: src/handlers/getUser.main
+    events:
+      - http:
+          path: /users/{username}
+          method: get
+  createGame:
+    handler: src/handlers/createGame.main
+    events:
+      - http:
+          path: /games
+          method: post
+  getGame:
+    handler: src/handlers/getGame.main
+    events:
+      - http:
+          path: /games/{gameId}
+          method: get
+
+custom:
+  dynamodb:
+    stages:
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      convertEmptyValues: true
+
+resources:
+  Resources:
+    GameTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties: 
+        AttributeDefinitions: 
+          - AttributeName: "PK"
+            AttributeType: "S"
+          - AttributeName: "SK"
+            AttributeType: "S"
+          - AttributeName: "map"
+            AttributeType: "S"
+          - AttributeName: "open_timestamp"
+            AttributeType: "S"
+        KeySchema: 
+          - AttributeName: "PK"
+            KeyType: "HASH"
+          - AttributeName: "SK"
+            KeyType: "RANGE"
+        BillingMode: "PAY_PER_REQUEST"
+        TableName: ${self:provider.environment.TABLE_NAME}
+        GlobalSecondaryIndexes:
+          - IndexName: 'OpenGamesIndex'
+            KeySchema:
+            - AttributeName: "map"
+              KeyType: "HASH"
+            - AttributeName: "open_timestamp"
+              KeyType: "RANGE"
+            Projection:
+              ProjectionType: ALL
+          - IndexName: 'InvertedIndex'
+            KeySchema:
+            - AttributeName: "SK"
+              KeyType: "HASH"
+            - AttributeName: "PK"
+              KeyType: "RANGE"
+            Projection:
+              ProjectionType: ALL
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
