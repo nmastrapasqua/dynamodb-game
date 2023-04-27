@@ -4,8 +4,8 @@ const {GameUser, joinGames} = require('../data/gameuser');
 
 module.exports.main = async (event) => {
     try {
-
-        const gameUser = new GameUser(event.pathParameters.gameId, event.pathParameters.username)
+        const {gameId} = JSON.parse(event.body)
+        const gameUser = new GameUser(gameId, event.pathParameters.username)
 
         const result = await joinGames(gameUser)
     

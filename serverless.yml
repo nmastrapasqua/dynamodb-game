@@ -68,8 +68,8 @@ functions:
     handler: src/handlers/joinGame.main
     events:
       - http:
-          path: /games/{gameId}/{username}
-          method: post
+          path: /users/{username}
+          method: put
   listUsersInGame:
     handler: src/handlers/listUsersInGame.main
     events:

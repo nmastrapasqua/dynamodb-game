@@ -9,7 +9,7 @@ class Game extends Item {
 
     constructor(creator, map, 
         game_id=AWS.util.uuid.v4(),
-        people=49, 
+        people=0, 
         create_time=new Date().toISOString().slice(0,19), 
         open_timestamp=new Date().toISOString().slice(0,19), 
         start_time=undefined) {
