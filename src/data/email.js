@@ -24,7 +24,8 @@ class Email extends Item {
 
     toItem() {
         return {
-            ...this.keys()
+            ...this.keys(),
+            email: {S: this.email}
         }
     }
 }

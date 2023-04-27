@@ -54,7 +54,7 @@ var createUser = async(user) => {
 
     const email = new Email(user.email);
 
-    const transactionRequest = await dbb.transactWriteItems({
+    await dbb.transactWriteItems({
         TransactItems: [
             {
                 Put: {

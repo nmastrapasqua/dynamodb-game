@@ -8,16 +8,28 @@ provider:
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - "dynamodb:BatchGetItem"
+        - "dynamodb:Scan"
         - "dynamodb:ConditionCheckItem"
         - "dynamodb:GetItem"
         - "dynamodb:PutItem"
         - "dynamodb:Query"
         - "dynamodb:UpdateItem"
       Resource:
-        Fn::GetAtt:
+        - Fn::GetAtt:
           - GameTable
           - Arn
+        - Fn::Join: 
+          - "/"
+          - - Fn::GetAtt:
+              - GameTable 
+              - Arn
+            - "index/InvertedIndex"
+        - Fn::Join: 
+          - "/"
+          - - Fn::GetAtt:
+              - GameTable 
+              - Arn
+            - "index/OpenGamesIndex"
   environment:
     TABLE_NAME: "GameTable"
 
@@ -46,6 +58,36 @@ functions:
       - http:
           path: /games/{gameId}
           method: get
+  listOpenGames:
+    handler: src/handlers/listOpenGames.main
+    events:
+      - http:
+          path: /games
+          method: get
+  joinGame:
+    handler: src/handlers/joinGame.main
+    events:
+      - http:
+          path: /games/{gameId}/{username}
+          method: post
+  listUsersInGame:
+    handler: src/handlers/listUsersInGame.main
+    events:
+      - http:
+          path: /games/{gameId}/users
+          method: get
+  listGamesForUser:
+    handler: src/handlers/listGamesForUser.main
+    events:
+      - http:
+          path: /users/{username}/games
+          method: get
+  startGame:
+    handler: src/handlers/startGame.main
+    events:
+      - http:
+          path: /games/{gameId}
+          method: put
 
 custom:
   dynamodb:
