@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "91d28725-d7ea-4dc9-b5a9-0bba17201232",
+		"name": "dynamodb-game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7112465"
+	},
+	"item": [
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Daniel Price\", \r\n    \"username\": \"lindsay56\",\r\n    \"address\": \"8896 Johnson Alley Suite 499, Phillipsberg, AR 08144\", \r\n    \"birthdate\": \"1920-04-17\", \r\n    \"email\": \"sanchezlaura@yahoo.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/{{stage}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/users/lindsay56",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"users",
+						"lindsay56"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "joinGame",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let body = {\r",
+							"    gameId: pm.variables.get('lastGameId') \r",
+							"}\r",
+							"pm.variables.set('body', JSON.stringify(body));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/{{stage}}/users/vlopez",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"users",
+						"vlopez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findGamesForUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/users/carrpatrick/games",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"users",
+						"carrpatrick",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createGame",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData=pm.response.json();\r",
+							"console.log('game_id',responseData.game_id);\r",
+							"pm.environment.set(\"lastGameId\", responseData.game_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creator\": \"lindsay56\", \r\n    \"map\": \"Open Ocean\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/{{stage}}/games",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGame",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData=pm.response.json();\r",
+							"console.log('game_id',responseData.game_id);\r",
+							"pm.environment.set(\"lastGameId\", responseData.game_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/games/c6f38a6a-d1c5-4bdf-8468-24692ccc4646",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games",
+						"c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "startGame",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"gstanley\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/{{stage}}/games/{{lastGameId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games",
+						"{{lastGameId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOpenGameByMap",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/games?map=Green Grasslands",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games"
+					],
+					"query": [
+						{
+							"key": "map",
+							"value": "Green Grasslands"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOpenGame",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/games/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchGameAndUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{stage}}/games/{{lastGameId}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{stage}}",
+						"games",
+						"{{lastGameId}}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
