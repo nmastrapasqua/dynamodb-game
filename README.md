@@ -14,14 +14,14 @@ Clonare il repository e spostarsi nella cartella `dynamodb-game`; eseguire:
 ```bash
 npm install
 
-# Eseguire le seguenti modifiche:
 #
-# Manually editing the download_url in node_modules/dynamodb-localhost/dynamodb/config.json to
+# Modificare il download_url nel file node_modules/dynamodb-localhost/dynamodb/config.json in
 # https://s3.us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz
-# and the import of http to https
-# in node_modules/dynamodb-localhost/dynamodb/installer.js
+# e l'import http in https
+# nel file node_modules/dynamodb-localhost/dynamodb/installer.js
 #
 # e poi
+
 sls dynamodb install
 ```
 
