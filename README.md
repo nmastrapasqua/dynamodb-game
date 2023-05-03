@@ -5,7 +5,7 @@ Progetto utilizzato nel webinar **Come modellare e interrogare i dati in DynamoD
 Per l'implementazione è stato utilizzato il framework [serverless](https://www.serverless.com/).
 
 ## Architettura
-![Architettura](docs/images/architettura-1.png)
+![Architettura](docs/images/architettura.png)
 
 ## Setup ambiente locale
 
