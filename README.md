@@ -1,6 +1,7 @@
 # :video_game: DynamoDB Game
 
-Progetto utilizzato nel webinar **Come modellare e interrogare i dati in DynamoDB: JOIN no grazie!** su [Codemotion](https://www.codemotion.com/).
+Progetto che accompagna il webinar  
+[**Come modellare e interrogare i dati in DynamoDB: JOIN no grazie!**](https://events.codemotion.com/webinars/come-modellare-e-interrogare-i-dati-in-dynamodb-join-no-grazie).
 
 Per l'implementazione è stato utilizzato il framework [serverless](https://www.serverless.com/).
 
