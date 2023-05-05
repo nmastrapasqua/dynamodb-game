@@ -5,10 +5,10 @@ Progetto che accompagna il webinar
 
 Per l'implementazione è stato utilizzato il framework [serverless](https://www.serverless.com/).
 
-## Architettura
+## :office: Architettura
 ![Architettura](docs/images/architettura.png)
 
-## Setup ambiente locale
+## :computer: Setup ambiente locale
 
 Clonare il repository e spostarsi nella cartella `dynamodb-game`; eseguire:
 
