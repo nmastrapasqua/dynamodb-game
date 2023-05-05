@@ -1,4 +1,4 @@
-# DynamoDB Game
+# :video_game: DynamoDB Game
 
 Progetto utilizzato nel webinar **Come modellare e interrogare i dati in DynamoDB: JOIN no grazie!** su [Codemotion](https://www.codemotion.com/).
 
@@ -16,7 +16,7 @@ npm install
 ```
 
 
-:exclamation: Modificare 
+:warning: Modificare 
 * il download_url nel file `node_modules/dynamodb-localhost/dynamodb/config.json` in  
 `https://s3.us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz`
 * l'import http in https
@@ -30,7 +30,7 @@ sls dynamodb install
 
 ### Esecuzione offline
 
-:exclamation: Per eseguire DynamoDB local occorre aver installato una versione recente di Java;
+:warning: Per eseguire DynamoDB local occorre aver installato una versione recente di Java;
 si consiglia [Amazon Corretto](https://aws.amazon.com/it/corretto/).
 
 ```bash
@@ -39,7 +39,7 @@ sls offline start --stage local
 
 Nella cartella `docs/postman` è presente la collezione postman per invocare l'API.
 
-## Per approfondire...
+## :eyes: Per approfondire...
 
 * [AWS re:Invent 2020: Data modeling with Amazon DynamoDB](https://www.youtube.com/watch?v=fiP2e-g-r4g)
 * [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide)
