@@ -16,11 +16,13 @@ npm install
 ```
 
 
-:exclamation: Modificare il download_url nel file `node_modules/dynamodb-localhost/dynamodb/config.json` in
+:exclamation: Modificare 
+* il download_url nel file `node_modules/dynamodb-localhost/dynamodb/config.json` in
 `https://s3.us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz`
-e l'import http in https
+* l'import http in https
 nel file `node_modules/dynamodb-localhost/dynamodb/installer.js`
-e poi eseguire
+
+poi eseguire
 
 ```bash
 sls dynamodb install
@@ -28,7 +30,7 @@ sls dynamodb install
 
 ### Esecuzione offline
 
-Per eseguire DynamoDB local occorre aver installato una versione recente di Java;
+:exclamation: Per eseguire DynamoDB local occorre aver installato una versione recente di Java;
 si consiglia [Amazon Corretto](https://aws.amazon.com/it/corretto/).
 
 ```bash
