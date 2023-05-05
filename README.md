@@ -35,6 +35,8 @@ sls dynamodb install
 si consiglia [Amazon Corretto](https://aws.amazon.com/it/corretto/).
 
 ```bash
+# Avvia DynamoDB local e l'HTTP Server che gestisce le richieste.
+# Viene anche creata la tabella GameTable definita in serverless.yml.
 sls offline start --stage local
 ```
 
