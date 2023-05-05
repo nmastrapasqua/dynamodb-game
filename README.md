@@ -17,7 +17,7 @@ npm install
 
 
 :exclamation: Modificare 
-* il download_url nel file `node_modules/dynamodb-localhost/dynamodb/config.json` in
+* il download_url nel file `node_modules/dynamodb-localhost/dynamodb/config.json` in  
 `https://s3.us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz`
 * l'import http in https
 nel file `node_modules/dynamodb-localhost/dynamodb/installer.js`
