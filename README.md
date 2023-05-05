@@ -35,3 +35,11 @@ sls offline start --stage local
 ```
 
 Nella cartella `docs/postman` è presente la collezione postman per invocare l'API.
+
+## Per approfondire...
+
+* [AWS re:Invent 2020: Data modeling with Amazon DynamoDB](https://www.youtube.com/watch?v=fiP2e-g-r4g)
+* [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide)
+* [DynamoDB Guide by Alex DeBrie](https://www.dynamodbguide.com/)
+* [AWS DynamoDB Workshop](https://amazon-dynamodb-labs.workshop.aws/)
+
