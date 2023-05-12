@@ -3,7 +3,8 @@
 Progetto che accompagna il webinar  
 [**Come modellare e interrogare i dati in DynamoDB: JOIN no grazie!**](https://events.codemotion.com/webinars/come-modellare-e-interrogare-i-dati-in-dynamodb-join-no-grazie).
 
-Per l'implementazione è stato utilizzato il framework   [serverless](https://www.serverless.com/)  e NodeJS v18.14.2
+Per l'implementazione ho utilizzato il framework [serverless](https://www.serverless.com/) 
+e [NodeJS](https://nodejs.org/en) v18.14.2
 
 ## :office: Architettura
 ![Architettura](docs/images/architettura.png)
