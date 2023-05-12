@@ -3,7 +3,7 @@
 Progetto che accompagna il webinar  
 [**Come modellare e interrogare i dati in DynamoDB: JOIN no grazie!**](https://events.codemotion.com/webinars/come-modellare-e-interrogare-i-dati-in-dynamodb-join-no-grazie).
 
-Per l'implementazione è stato utilizzato il framework [serverless](https://www.serverless.com/).
+Per l'implementazione è stato utilizzato il framework   [serverless](https://www.serverless.com/)  e NodeJS v18.14.2
 
 ## :office: Architettura
 ![Architettura](docs/images/architettura.png)
@@ -48,4 +48,5 @@ Nella cartella `docs/postman` è presente la collezione postman per invocare l'A
 * [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide)
 * [DynamoDB Guide by Alex DeBrie](https://www.dynamodbguide.com/)
 * [AWS DynamoDB Workshop](https://amazon-dynamodb-labs.workshop.aws/)
+* [Advanced DynamoDB Patterns](https://www.youtube.com/watch?v=Q6-qWdsa8a4&t=7s)
 
